@@ -27,7 +27,7 @@ Sometimes the time could be a "time bomb", for example, Millennium bug. This err
 
 2. Overburden
 
-When the data is too much or the running time is too long, software fails. Maybe it's hours or days, or it may be years or decays.
+When the data is too much or the running time is too long, software fails. Maybe it lasts for hours or even days, or it may be years or decays.
 
 3. False Use
 
@@ -94,7 +94,7 @@ The following module of the Beer system calculates the cost of wine orders. The 
 
 ### (a) Draw a control flow chart for procedure CostOfWine. (4 marks)
 
-![control flow chart](a1q2.pdf)
+![control flow chart](images/a1q2.pdf)
 
 The control flow chart is shown as Figure 1.
 
@@ -122,18 +122,111 @@ path                                input  expected result
 ### Compare doing verification **only after coding** vs. **during all phases**.
 
 ### Assume
-+ there are 5 phases: Requirements, Design, Code, Test, and Production.
++ There are 5 phases: Requirements, Design, Code, Test, and Production.
 + 20 errors introduced at Requirements
 + 20 errors introduced at Design
 + 20 errors introduced at Code
 
 ### (a) Work out the cost of fixing all defects when verification is done at the Test phase. (4 marks)
 
+Given the condition as described in the question, we can draw a table comparing the debugging cost and defects detection rate like this.
+
+---------------------------------------------------------------------
+   Stage     Errors Introduced    Debug Cost   Defects Detection Rate
+------------ ----------------- -------------  -----------------------
+Requirements                20             1  50%
+
+Design                      20             1  50%
+
+Code                        20             1  50%
+
+Test                         0            10  80%
+
+Production                   0           100  100%
+---------------------------------------------------------------------
+
+The question (a) performs verification only at the Test Phase. Then errors are found only in Test phase at the percentage of 80%. The actual cost could be calculated like this(assuming the cost of correcting a defect before coding is 1).
+
+------------------------------------------------------------------
+   Stage       Previous Bugs   Total Bugs   Detected  Solving cost
+------------  --------------  -----------  --------- -------------
+Requirements              0            20          0             0
+
+Design                   20            40          0             0
+
+Code                     20            60          0             0
+
+Test                     60            60         48           480
+
+Production               12            12         12          1200
+------------------------------------------------------------------
+
+And the total cost is 480 + 1200 = 1680.
+
 ### (b) Work out the cost of fixing all defects when verification is done at each of Requirements, Design, Code and Test phases. (8 marks)
+
+Question (b) performs verification at Requirements, Design, Code and Test Phase. Then there are bugs found in every phases. The actual cost could be calculated like this.
+
+------------------------------------------------------------------
+   Stage       Previous Bugs   Total Bugs   Detected  Solving Cost
+------------  --------------  -----------  --------- -------------
+Requirements              0            20         10            10
+
+Design                   10            30         15            15
+
+Code                     15            35       17.5          17.5
+
+Test                   17.5          17.5         14           140
+
+Production              3.5           3.5        3.5           350
+------------------------------------------------------------------
+
+And the total cost is 10 + 15 + 17.5 + 140 + 350 = 532.5.
 
 ## Question 4
 
 ### A bug tracking tool offers many useful functions to the users to report, track, classify bug/defect reports, etc. Take a close look at [Bugzilla](http://www.bugzilla.org/features/) and list 8 key functions of this tool that help with bug tracking. (8 marks)
+
+In the offcial website of Bugzilla, it is descripted that the benefits of it as follows:
+
+1. Improve communication
+
+In my short experience, the web sever and email combined structure really helps the communication between users and developers. And also all the bugs and commets are numbered. The communicaion is really tracable by talking about bug 555, or the comment 9.
+
+2. Increase product quality
+
+Of cause, keeping bugs tracable and giving users the oppotunity to report bugs through the whole life cycle of the software improves the product quality greatly.
+
+3. Improve customer satisfaction
+
+Every error and question is recorded and treated seriously. This feature satisfy the need of customers.
+
+4. Ensure accountability
+
+Flexible structure and various ways of communication made Bugzilla a reliable system. It is a safe and mature bug tracing system.
+
+5. Increase productivity
+
+This can be seen in several different fields.
+
+   1. Every bug is clearly numbered and the history is logged. This saves lots of time finding previous work and avoid the confusions.
+   2. The status of every bug is clearly stated. The priority and risk level is shown by users' voting. And all corresponents are automatically added to the CC list. Changes on the bug status are sent to all people concerning it.
+
+6. Bugzilla can adapt to multiple situations
+
+The core service of Bugzilla is remaining flexible. Different databases or front ends can be added. It can be modified to suit new environment like small business.
+
+The major functions behind all these features are listed below.
+
+  1. Searching function
+  2. User-configurable email notifications of bug changes
+  3. Full change history
+  4. Inter-bug dependency tracking and graphing
+  5. Attachment management
+  6. A robust, stable relational database management system back-end
+  7. Web, XML, email and console interfaces
+  8. Completely customisable and/or localisable web user interface
+  9. Extensive configurability
 
 ## Question 5 (16 marks)
 
